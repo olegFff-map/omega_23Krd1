@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Строительная компания ОМЕГА | Дома под ключ в Краснодаре</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@500;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <style>
+        /* --- БАЗОВЫЕ НАСТРОЙКИ И ПЕРЕМЕННЫЕ --- */
+        :root {
+            --bg-milk: #F9F8F6;      
+            --bg-gray: #F0F0F0;      
+            --graphite: #1A1A1A;     
+            --gold: #C5A880;         
+            --gold-hover: #d4b995;
+            --white: #FFFFFF;
+            --text-gray: #555555;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0 !important; 
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-milk);
+            color: var(--graphite);
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; height: auto; }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* --- АНИМАЦИИ ПРИ ПРОКРУТКЕ --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- КНОПКИ --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--graphite);
+            box-shadow: 0 4px 15px rgba(197, 168, 128, 0.3);
+        }
+        .btn-gold:hover { 
+            background-color: var(--gold-hover);
+            box-shadow: 0 6px 20px rgba(197, 168, 128, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-gold {
+            background-color: transparent;
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+        .btn-outline-gold:hover {
+            background-color: var(--gold);
+            color: var(--graphite);
+            transform: translateY(-2px);
+        }
+
+        /* --- ШАПКА --- */
+        header {
+            background-color: var(--graphite);
+            color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+            transition: all 0.3s ease;
+            flex-wrap: nowrap;
+            gap: 20px;
+        }
+        
+        .logo-wrap { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .logo-text { 
+            color: var(--gold); 
+            font-weight: 800; 
+            font-size: 32px; 
+            letter-spacing: 4px; 
+            line-height: 1; 
+            text-shadow: 0 0 10px rgba(197, 168, 128, 0.3);
+        }
+        .logo-sub { 
+            font-size: 10px; 
+            letter-spacing: 3px; 
+            color: var(--gold); 
+            text-transform: uppercase; 
+            margin-top: 5px; 
+            font-weight: 500;
+        }
+
+        nav { 
+            display: flex; 
+            gap: 25px; 
+            align-items: center;
+            flex-shrink: 0;
+        }
+        nav a { 
+            font-size: 14px; 
+            font-weight: 500; 
+            letter-spacing: 0.5px; 
+            position: relative;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after { width: 100%; }
+        nav a:hover { color: var(--gold); }
+
+        .header-contacts { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px;
+            flex-shrink: 0;
+        }
+        
+        .contact-block { display: flex; flex-direction: column; text-align: right; }
+        .contact-name { font-size: 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+        .contact-phone { font-size: 14px; font-weight: 600; color: var(--white); white-space: nowrap; }
+        .contact-phone:hover { color: var(--gold); }
+
+        .tg-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .tg-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 50% !important;
+            transition: all 0.3s ease;
+        }
+        .tg-link:hover {
+            background-color: var(--gold);
+            color: var(--graphite);
+            transform: scale(1.1);
+        }
+        .tg-link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* --- ПЕРВЫЙ ЭКРАН (HERO) --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 85vh;
+            background-color: var(--bg-milk);
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content { padding: 60px 10% 60px 10%; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; }
+
+        /* Анимированный логотип - ДОМ С КРЫШЕЙ */
+        .hero-logo-animation {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .logo-house {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 5px;
+        }
+        
+        .logo-house span {
+            display: block;
+            width: 8px;
+            background-color: var(--gold);
+            height: 0;
+            animation: growWall 1s ease-out forwards;
+        }
+        
+        .logo-roof {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 40px;
+            overflow: hidden;
+        }
+        .logo-roof::before,
+        .logo-roof::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 70px;
+            height: 3px;
+            background-color: var(--gold);
+            transform-origin: bottom;
+        }
+        .logo-roof::before {
+            left: 50%;
+            transform: translateX(-100%) rotate(-35deg);
+            animation: growRoofLeft 1s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+        .logo-roof::after {
+            left: 50%;
+            transform: translateX(0) rotate(35deg);
+            animation: growRoofRight 1s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+
+        .logo-house span:nth-child(1) { animation-delay: 0.1s; }
+        .logo-house span:nth-child(2) { animation-delay: 0.15s; }
+        .logo-house span:nth-child(3) { animation-delay: 0.2s; }
+        .logo-house span:nth-child(4) { animation-delay: 0.25s; }
+        .logo-house span:nth-child(5) { animation-delay: 0.3s; }
+        .logo-house span:nth-child(6) { animation-delay: 0.35s; }
+        .logo-house span:nth-child(7) { animation-delay: 0.4s; }
+
+        @keyframes growWall {
+            from { height: 0; }
+            to { height: 80px; }
+        }
+
+        @keyframes growRoofLeft {
+            from { opacity: 0; transform: translateX(-100%) rotate(-35deg) scaleX(0); }
+            to { opacity: 1; transform: translateX(-100%) rotate(-35deg) scaleX(1); }
+        }
+        @keyframes growRoofRight {
+            from { opacity: 0; transform: translateX(0) rotate(35deg) scaleX(0); }
+            to { opacity: 1; transform: translateX(0) rotate(35deg) scaleX(1); }
+        }
+
+        .hero-logo-text {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            letter-spacing: 8px;
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(197, 168, 128, 0.5);
+            opacity: 0;
+            animation: fadeInText 1s ease-out 1s forwards;
+        }
+        .hero-logo-sub {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            letter-spacing: 5px;
+            color: var(--gold);
+            opacity: 0;
+            animation: fadeInText 1s ease-out 1.2s forwards;
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .particles {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatParticle 4s ease-in-out infinite;
+        }
+        .particle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 30%; left: 80%; animation-delay: 0.5s; }
+        .particle:nth-child(3) { top: 60%; left: 15%; animation-delay: 1s; }
+        .particle:nth-child(4) { top: 80%; left: 70%; animation-delay: 1.5s; }
+        .particle:nth-child(5) { top: 40%; left: 50%; animation-delay: 2s; }
+        .particle:nth-child(6) { top: 70%; left: 30%; animation-delay: 2.5s; }
+
+        @keyframes floatParticle {
+            0% { opacity: 0; transform: translateY(0) scale(0); }
+            50% { opacity: 1; transform: translateY(-20px) scale(1); }
+            100% { opacity: 0; transform: translateY(-40px) scale(0); }
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            font-weight: 800;
+            animation: slideInLeft 1s ease-out 1.4s both;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            font-weight: 300;
+            animation: slideInLeft 1s ease-out 1.6s both;
+        }
+
+        .hero-buttons { 
+            display: flex; 
+            gap: 20px; 
+            margin-bottom: 50px; 
+            animation: slideInLeft 1s ease-out 1.8s both;
+        }
+
+        .trust-bar {
+            display: flex;
+            gap: 40px;
+            border-top: 1px solid var(--gold);
+            padding-top: 30px;
+            animation: slideInLeft 1s ease-out 2s both;
+            width: 100%;
+        }
+
+        .trust-item { display: flex; flex-direction: column; }
+        .trust-item span {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 42px;
+            color: var(--gold);
+            line-height: 1;
+            font-weight: 600;
+        }
+        .trust-item small {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+            color: var(--graphite);
+            font-weight: 500;
+        }
+
+        .hero-image {
+            height: 100%;
+            min-height: 600px;
+            /* ЗАМЕНИТЕ НА ВАШЕ ГЛАВНОЕ ФОТО */
+            background-image: url('img/hero-house.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: #ddd;
+            animation: fadeIn 1.5s ease-out;
+            position: relative;
+        }
+        
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(249,248,246,0.8) 0%, rgba(249,248,246,0) 50%);
+        }
+
+        /* --- БОЛИ И РЕШЕНИЯ --- */
+        .problems { padding: 100px 5%; background-color: var(--bg-gray); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 36px; margin-bottom: 15px; }
+        .section-header p { color: var(--text-gray); font-size: 18px; max-width: 700px; margin: 0 auto; }
+
+        .compare-table {
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 1px solid var(--gold);
+            background: var(--white);
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.3s ease;
+        }
+        .compare-table:hover { box-shadow: var(--shadow-hover); }
+        
+        .compare-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid #e0e0e0;
+            transition: background 0.3s ease;
+        }
+        .compare-row:hover { background-color: #fafafa; }
+        .compare-row:last-child { border-bottom: none; }
+        .compare-cell { padding: 25px 30px; font-size: 16px; }
+        .compare-cell.problem {
+            border-right: 1px solid #e0e0e0;
+            color: #777;
+            display: flex;
+            align-items: center;
+        }
+        .compare-cell.problem::before {
+            content: "✕";
+            color: #d9534f;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        .compare-cell.solution {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            color: var(--graphite);
+        }
+        .compare-cell.solution::before {
+            content: "✓";
+            color: var(--gold);
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* --- УСЛУГИ --- */
+        .services { padding: 100px 5%; background-color: var(--bg-milk); }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .card {
+            background: var(--white);
+            padding: 40px 30px;
+            border: 1px solid var(--gold);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow);
+        }
+        .card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: var(--shadow-hover);
+        }
+        .card h3 { font-size: 20px; margin-bottom: 15px; min-height: 50px; }
+        .price {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--graphite);
+            margin-bottom: 25px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .price span { font-size: 16px; font-weight: 400; color: #888; }
+        .card ul { margin-bottom: 35px; flex-grow: 1; }
+        .card ul li {
+            font-size: 15px;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            color: #444;
+        }
+        .card ul li::before {
+            content: "—";
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+        }
+        .card .btn { width: 100%; }
+
+        /* --- ЖУРНАЛ (КАТАЛОГ) --- */
+        .magazine-section {
+            padding: 100px 5%;
+            background-color: var(--bg-gray);
+            overflow: hidden;
+        }
+        .magazine {
+            max-width: 900px;
+            margin: 0 auto;
+            perspective: 2000px;
+            position: relative;
+            height: 500px;
+        }
+        .magazine-pages {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+        .magazine-page {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            border: 1px solid var(--gold);
+            box-shadow: var(--shadow);
+            display: flex;
+            opacity: 0;
+            transform: rotateY(-90deg);
+            transform-origin: left center;
+            transition: all 0.6s ease;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .magazine-page.active {
+            opacity: 1;
+            transform: rotateY(0deg);
+            pointer-events: auto;
+            z-index: 2;
+        }
+        .magazine-page.prev {
+            opacity: 0;
+            transform: rotateY(90deg);
+            transform-origin: right center;
+        }
+
+        .page-content {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        .page-image {
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .page-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .magazine-page:hover .page-image img {
+            transform: scale(1.05);
+        }
+        .page-info {
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--white);
+        }
+        .page-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            color: var(--gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .page-info h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .page-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+        .page-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .page-meta .gold {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .page-desc {
+            font-size: 15px;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+        .page-info .btn {
+            width: fit-content;
+        }
+
+        .magazine-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .magazine-btn {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .magazine-btn:hover {
+            background: var(--gold);
+            color: var(--graphite);
+        }
+        .magazine-counter {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: var(--graphite);
+            font-weight: 600;
+        }
+
+        /* --- ГАЛЕРЕЯ РАБОТ --- */
+        .portfolio { padding: 100px 5%; background-color: var(--bg-milk); }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            background-color: #ddd;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.85);
+            color: var(--white);
+            padding: 15px;
+            font-size: 14px;
+            border-left: 3px solid var(--gold);
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover .gallery-caption { transform: translateY(0); }
+
+        /* --- ПРОЦЕСС --- */
+        .process { padding: 100px 5%; background-color: var(--bg-gray); }
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-top: 50px;
+            position: relative;
+        }
+        .process-steps::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background-color: var(--gold);
+            z-index: 1;
+        }
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            background: var(--bg-gray);
+            padding: 0 10px;
+            transition: transform 0.3s ease;
+        }
+        .step:hover { transform: translateY(-5px); }
+        .step-num {
+            width: 60px;
+            height: 60px;
+            background-color: var(--gold);
+            color: var(--graphite);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 28px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            transition: all 0.3s ease;
+        }
+        .step:hover .step-num {
+            background-color: var(--graphite);
+            color: var(--gold);
+            transform: scale(1.1);
+        }
+        .step h4 { font-size: 16px; margin-bottom: 10px; }
+        .step p { font-size: 14px; color: var(--text-gray); }
+
+        /* --- ОТЗЫВЫ --- */
+        .reviews { padding: 100px 5%; background-color: var(--graphite); color: var(--white); }
+        .reviews .section-header h2 { color: var(--white); }
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .review-card {
+            background: #2C2C2C;
+            padding: 40px 30px;
+            border-top: 3px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+        .review-card:hover {
+            background: #333;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .quote-mark {
+            font-family: 'Playfair Display', serif;
+            font-size: 60px;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .review-text { font-style: italic; margin-bottom: 20px; color: #ddd; font-size: 15px; }
+        .review-author { font-weight: 600; color: var(--gold); }
+        .review-obj { font-size: 13px; color: #999; margin-top: 5px; }
+
+        /* --- О КОМПАНИИ --- */
+        .about { padding: 100px 5%; background-color: var(--bg-milk); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-text h2 { font-size: 36px; margin-bottom: 25px; }
+        .about-text p { margin-bottom: 20px; color: var(--text-gray); font-size: 16px; }
+        .about-image {
+            height: 500px;
+            /* ЗАМЕНИТЕ НА ВАШЕ ФОТО */
+            background-image: url('img/about-brick.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: #ccc;
+            border: 1px solid var(--gold);
+            transition: transform 0.5s ease;
+        }
+        .about-image:hover { transform: scale(1.02); }
+
+        /* --- FAQ --- */
+        .faq { padding: 100px 5%; background-color: var(--bg-gray); }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { 
+            background: var(--white); 
+            margin-bottom: 15px; 
+            border: 1px solid #e0e0e0; 
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover { border-color: var(--gold); box-shadow: var(--shadow); }
+        .faq-question {
+            padding: 25px 30px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question::after { content: "+"; color: var(--gold); font-size: 24px; font-weight: 300; transition: transform 0.3s ease; }
+        .faq-item.active .faq-question::after { transform: rotate(45deg); }
+        .faq-answer { padding: 0 30px 25px 30px; color: var(--text-gray); display: none; }
+
+        /* --- ФОРМА ВНИЗУ --- */
+        .cta-section {
+            padding: 100px 5%;
+            background-color: var(--graphite);
+            color: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .cta-content h2 { font-size: 40px; margin-bottom: 20px; color: var(--white); }
+        .cta-content p { font-size: 18px; color: #ccc; margin-bottom: 30px; }
+        
+        .call-block {
+            border: 1px solid var(--gold);
+            padding: 30px;
+            margin-top: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .call-block:hover { box-shadow: 0 0 20px rgba(197,168,128,0.2); }
+        .call-block h3 { color: var(--gold); font-size: 22px; margin-bottom: 15px; }
+        .call-block p { font-size: 16px; color: #ddd; margin-bottom: 25px; }
+        .call-block .phone-numbers { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            margin-bottom: 25px; 
+        }
+        .call-block .phone-numbers a {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            transition: color 0.3s;
+        }
+        .call-block .phone-numbers a:hover { color: var(--gold); }
+        .call-block .btn { width: 100%; }
+
+        .form-container { 
+            background: #2C2C2C; 
+            padding: 50px 40px; 
+            border: 1px solid #444; 
+            transition: all 0.3s ease;
+        }
+        .form-container:hover { border-color: var(--gold); }
+        .form-container h3 { font-size: 24px; margin-bottom: 30px; text-align: center; }
+        .form-group { margin-bottom: 25px; }
+        .form-group input {
+            width: 100%;
+            padding: 15px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #555;
+            color: var(--white);
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: border 0.3s ease;
+        }
+        .form-group input:focus { outline: none; border-bottom-color: var(--gold); }
+        .form-group input::placeholder { color: #888; }
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 30px;
+            font-size: 12px;
+            color: #aaa;
+        }
+        .checkbox-group input { margin-top: 3px; }
+        .form-btn { width: 100%; }
+
+        /* --- МОДАЛЬНОЕ ОКНО --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .modal-overlay.active { display: flex; }
+        
+        .modal-content {
+            background: var(--white);
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid var(--gold);
+            position: relative;
+            animation: modalIn 0.4s ease-out;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+        .modal-close:hover { color: var(--graphite); }
+        
+        .modal-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--graphite);
+            text-align: center;
+        }
+        .modal-content p {
+            text-align: center;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .modal-form .form-group { margin-bottom: 20px; }
+        .modal-form input {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: border 0.3s;
+        }
+        .modal-form input:focus { outline: none; border-bottom-color: var(--gold); }
+        .modal-form .btn { width: 100%; margin-top: 10px; }
+        
+        .modal-success {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* --- ПОДВАЛ --- */
+        footer {
+            background-color: #111;
+            color: var(--white);
+            padding: 60px 5% 30px 5%;
+            border-top: 1px solid #333;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 { color: var(--gold); margin-bottom: 20px; font-size: 16px; }
+        .footer-col p, .footer-col a { font-size: 14px; color: #aaa; margin-bottom: 12px; display: block; }
+        .footer-col a:hover { color: var(--gold); }
+        
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        .footer-logo .logo-text { font-size: 28px; }
+        .footer-logo .logo-sub { font-size: 8px; }
+
+        .footer-map {
+            width: 100%;
+            height: 250px;
+            border: 1px solid #333;
+            margin-top: 10px;
+            background-color: #222;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* --- МОБИЛЬНАЯ КНОПКА ЗВОНКА --- */
+        .mobile-call-btn {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--gold);
+            color: var(--graphite);
+            text-align: center;
+            padding: 15px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            z-index: 9999;
+            border-top: 1px solid var(--white);
+            font-size: 16px;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* --- АНИМАЦИИ --- */
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- АДАПТИВНОСТЬ --- */
+        @media (max-width: 1200px) {
+            header { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .logo-wrap { align-items: center; }
+            nav { order: 3; width: 100%; justify-content: center; margin-top: 10px; }
+            .header-contacts { gap: 10px; }
+        }
+
+        @media (max-width: 1024px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-content { padding: 60px 5%; order: 2; }
+            .hero-image { min-height: 400px; order: 1; }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-steps { grid-template-columns: 1fr; }
+            .process-steps::before { display: none; }
+            .review-grid { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-image { height: 300px; order: -1; }
+            .cta-section { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            
+            .magazine { height: auto; perspective: none; }
+            .magazine-pages { display: flex; flex-direction: column; gap: 30px; transform-style: flat; }
+            .magazine-page { position: relative; opacity: 1; transform: none; pointer-events: auto; display: none; }
+            .magazine-page.active { display: flex; }
+            .page-content { flex-direction: column; }
+            .page-image { width: 100%; height: 250px; }
+            .page-info { width: 100%; padding: 30px; }
+            .magazine-nav { margin-top: 20px; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 32px; }
+            .hero h1 { font-size: 32px; }
+            .hero-buttons { flex-direction: column; }
+            .trust-bar { flex-direction: column; gap: 20px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .compare-row { grid-template-columns: 1fr; }
+            .compare-cell.problem { border-right: none; border-bottom: 1px solid #e0e0e0; }
+            
+            header { padding: 10px 5%; }
+            header nav, header .header-contacts { display: none; } 
+            .logo-text { font-size: 24px; }
+            .logo-sub { font-size: 8px; }
+            
+            .mobile-call-btn { display: block; }
+            body { padding-bottom: 60px; }
+            .hero-buttons .btn { width: 100%; }
+            .cta-content h2 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА САЙТА -->
+    <header id="header">
+        <a href="#" class="logo-wrap">
+            <div class="logo-text">ОМЕГА</div>
+            <div class="logo-sub">СТРОИТЕЛЬНАЯ КОМПАНИЯ</div>
+        </a>
+        
+        <nav>
+            <a href="#services">Услуги</a>
+            <a href="#catalog">Каталог</a>
+            <a href="#process">Процесс</a>
+            <a href="#about">О компании</a>
+            <a href="#faq">Вопросы</a>
+        </nav>
+        
+        <div class="header-contacts">
+            <div class="contact-block">
+                <span class="contact-name">Евгений</span>
+                <a href="tel:+79183330323" class="contact-phone">+7 (918) 333-03-23</a>
+            </div>
+            <div class="contact-block">
+                <span class="contact-name">Денис</span>
+                <a href="tel:+79186990140" class="contact-phone">+7 (918) 699-01-40</a>
+            </div>
+            
+            <div class="tg-links">
+                <a href="https://t.me/OmegaKrd23" target="_blank" class="tg-link" title="Наш канал в Telegram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                </a>
+                <a href="https://t.me/OmegaKrd23_bot" target="_blank" class="tg-link" title="Наш бот в Telegram">
+                    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/></svg>
+                </a>
+            </div>
+            
+            <button class="btn btn-gold" onclick="openModal()">Консультация</button>
+        </div>
+    </header>
+
+    <!-- ПЕРВЫЙ ЭКРАН -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-logo-animation">
+                <div class="logo-house">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="logo-roof"></div>
+                <div class="hero-logo-text">ОМЕГА</div>
+                <div class="hero-logo-sub">СТРОИТЕЛЬНАЯ КОМПАНИЯ</div>
+                <div class="particles">
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                </div>
+            </div>
+            
+            <h1>Строим дома под ключ в Краснодаре — по договору, в срок, с гарантией</h1>
+            <p>Более 8 лет опыта. 200+ сданных объектов. Металлоконструкции и ремонт любой сложности. Работаем на совесть.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-gold" onclick="openModal()">Получить консультацию</button>
+                <a href="#catalog" class="btn btn-outline-gold">Смотреть проекты</a>
+            </div>
+            <div class="trust-bar">
+                <div class="trust-item"><span>8</span><small>лет на рынке</small></div>
+                <div class="trust-item"><span>200+</span><small>сданных объектов</small></div>
+                <div class="trust-item"><span>15</span><small>лет гарантии</small></div>
+            </div>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <!-- БОЛИ И РЕШЕНИЯ -->
+    <section class="problems reveal" id="problems">
+        <div class="container">
+            <div class="section-header">
+                <h2>С нами вы не узнаете, что такое «нервная стройка»</h2>
+                <p>Мы честно говорим о том, как бывает, и показываем, как мы решаем эти вопросы.</p>
+            </div>
+            <div class="compare-table">
+                <div class="compare-row">
+                    <div class="compare-cell problem">Смета растёт в процессе</div>
+                    <div class="compare-cell solution">Фиксируем цены в официальном договоре</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell problem">Сроки срываются</div>
+                    <div class="compare-cell solution">Прописываем сроки в договоре и соблюдаем</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell problem">Бригада исчезает</div>
+                    <div class="compare-cell solution">Официальный договор + гарантия 15 лет</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-cell problem">«Картинка в голове» не совпала с реальностью</div>
+                    <div class="compare-cell solution">Предварительный выезд бригадира на участок + обсуждение проекта до старта</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- УСЛУГИ -->
+    <section class="services reveal" id="services">
+        <div class="container">
+            <div class="section-header"><h2>Наши услуги</h2></div>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>🏠 Дома под ключ</h3>
+                    <div class="price">от 45 000 ₽<span>/м²</span></div>
+                    <ul>
+                        <li>Строительство от фундамента до чистовой отделки</li>
+                        <li>Индивидуальные проекты и типовые решения</li>
+                        <li>Фиксированная смета в договоре</li>
+                        <li>Выезд бригадира на участок</li>
+                    </ul>
+                    <button class="btn btn-outline-gold" onclick="openModal()">Заказать</button>
+                </div>
+                <div class="card">
+                    <h3>🏗 Металлоконструкции</h3>
+                    <div class="price">от 7 000 ₽<span>/м²</span></div>
+                    <ul>
+                        <li>Ангары, склады, навесы, каркасы зданий</li>
+                        <li>Работа по вашим чертежам</li>
+                        <li>Изготовление и монтаж «под ключ»</li>
+                        <li>Сжатые сроки</li>
+                    </ul>
+                    <button class="btn btn-outline-gold" onclick="openModal()">Заказать</button>
+                </div>
+                <div class="card">
+                    <h3>🔨 Ремонт любой сложности</h3>
+                    <div class="price">от 10 000 ₽<span>/м²</span></div>
+                    <ul>
+                        <li>Капитальный, косметический, дизайнерский</li>
+                        <li>Дома, квартиры, коммерческие помещения</li>
+                        <li>Любые материалы и стили</li>
+                        <li>Гарантия по договору</li>
+                    </ul>
+                    <button class="btn btn-outline-gold" onclick="openModal()">Заказать</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КАТАЛОГ В ВИДЕ ЖУРНАЛА -->
+    <section class="magazine-section reveal" id="catalog">
+        <div class="container">
+            <div class="section-header">
+                <h2>Каталог проектов</h2>
+                <p>Листайте страницы, чтобы выбрать идеальный дом для вашей семьи.</p>
+            </div>
+            
+            <div class="magazine">
+                <div class="magazine-pages" id="magazinePages">
+                    <!-- Страница 1 -->
+                    <div class="magazine-page active" data-page="1">
+                        <div class="page-content">
+                            <div class="page-image">
+                                <img src="img/dom-klassik.jpg" alt="Дом Классик">
+                            </div>
+                            <div class="page-info">
+                                <div class="page-number">ПРОЕКТ 01</div>
+                                <h3>Дом «Классик»</h3>
+                                <div class="page-meta">
+                                    <span>📐 <span class="gold">140 м²</span></span>
+                                    <span>⏱ <span class="gold">4 мес</span></span>
+                                </div>
+                                <p class="page-desc">Двухэтажный дом из кирпича с гаражом на 2 машины. Идеален для семьи с детьми. Просторная кухня-гостиная, 3 спальни, 2 санузла.</p>
+                                <button class="btn btn-gold" onclick="openModal()">Заказать проект</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Страница 2 -->
+                    <div class="magazine-page" data-page="2">
+                        <div class="page-content">
+                            <div class="page-image">
+                                <img src="img/dom-modern.jpg" alt="Дом Модерн">
+                            </div>
+                            <div class="page-info">
+                                <div class="page-number">ПРОЕКТ 02</div>
+                                <h3>Дом «Модерн»</h3>
+                                <div class="page-meta">
+                                    <span>📐 <span class="gold">180 м²</span></span>
+                                    <span>⏱ <span class="gold">5 мес</span></span>
+                                </div>
+                                <p class="page-desc">Современный одноэтажный дом с панорамными окнами и плоской крышей. Открытая планировка, терраса с выходом в сад.</p>
+                                <button class="btn btn-gold" onclick="openModal()">Заказать проект</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Страница 3 -->
+                    <div class="magazine-page" data-page="3">
+                        <div class="page-content">
+                            <div class="page-image">
+                                <img src="img/dom-premium.jpg" alt="Дом Премиум">
+                            </div>
+                            <div class="page-info">
+                                <div class="page-number">ПРОЕКТ 03</div>
+                                <h3>Дом «Премиум»</h3>
+                                <div class="page-meta">
+                                    <span>📐 <span class="gold">282 м²</span></span>
+                                    <span>⏱ <span class="gold">5 мес</span></span>
+                                </div>
+                                <p class="page-desc">Двухэтажный особняк с бассейном и ландшафтным дизайном. Премиальные материалы, зимний сад, камин.</p>
+                                <button class="btn btn-gold" onclick="openModal()">Заказать проект</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Страница 4 -->
+                    <div class="magazine-page" data-page="4">
+                        <div class="page-content">
+                            <div class="page-image">
+                                <img src="img/dom-scandic.jpg" alt="Дом Скандинавский">
+                            </div>
+                            <div class="page-info">
+                                <div class="page-number">ПРОЕКТ 04</div>
+                                <h3>Дом «Скандинавский»</h3>
+                                <div class="page-meta">
+                                    <span>📐 <span class="gold">120 м²</span></span>
+                                    <span>⏱ <span class="gold">3 мес</span></span>
+                                </div>
+                                <p class="page-desc">Одноэтажный дом в скандинавском стиле. Большие окна, натуральные материалы, минималистичный дизайн.</p>
+                                <button class="btn btn-gold" onclick="openModal()">Заказать проект</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Страница 5 -->
+                    <div class="magazine-page" data-page="5">
+                        <div class="page-content">
+                            <div class="page-image">
+                                <img src="img/dom-barnhouse.jpg" alt="Дом Барнхаус">
+                            </div>
+                            <div class="page-info">
+                                <div class="page-number">ПРОЕКТ 05</div>
+                                <h3>Дом «Барнхаус»</h3>
+                                <div class="page-meta">
+                                    <span>📐 <span class="gold">160 м²</span></span>
+                                    <span>⏱ <span class="gold">4 мес</span></span>
+                                </div>
+                                <p class="page-desc">Стильный барнхаус с двускатной крышей и панорамным остеклением. Сочетание дерева и металла.</p>
+                                <button class="btn btn-gold" onclick="openModal()">Заказать проект</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Страница 6 -->
+                    <div class="magazine-page" data-page="6">
+                        <div class="page-content">
+                            <div class="page-image">
+                                <img src="img/dom-terrace.jpg" alt="Дом Терраса">
+                            </div>
+                            <div class="page-info">
+                                <div class="page-number">ПРОЕКТ 06</div>
+                                <h3>Дом «Терраса»</h3>
+                                <div class="page-meta">
+                                    <span>📐 <span class="gold">200 м²</span></span>
+                                    <span>⏱ <span class="gold">5 мес</span></span>
+                                </div>
+                                <p class="page-desc">Дом с просторной террасой и зоной барбекю. Идеален для загородного отдыха и приема гостей.</p>
+                                <button class="btn btn-gold" onclick="openModal()">Заказать проект</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Страница 7 -->
+                    <div class="magazine-page" data-page="7">
+                        <div class="page-content">
+                            <div class="page-image">
+                                <img src="img/dom-family.jpg" alt="Дом Семейный">
+                            </div>
+                            <div class="page-info">
+                                <div class="page-number">ПРОЕКТ 07</div>
+                                <h3>Дом «Семейный»</h3>
+                                <div class="page-meta">
+                                    <span>📐 <span class="gold">220 м²</span></span>
+                                    <span>⏱ <span class="gold">6 мес</span></span>
+                                </div>
+                                <p class="page-desc">Просторный двухэтажный дом для большой семьи. 4 спальни, кабинет, детская игровая комната.</p>
+                                <button class="btn btn-gold" onclick="openModal()">Заказать проект</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Страница 8 -->
+                    <div class="magazine-page" data-page="8">
+                        <div class="page-content">
+                            <div class="page-image">
+                                <img src="img/dom-minimal.jpg" alt="Дом Минимал">
+                            </div>
+                            <div class="page-info">
+                                <div class="page-number">ПРОЕКТ 08</div>
+                                <h3>Дом «Минимал»</h3>
+                                <div class="page-meta">
+                                    <span>📐 <span class="gold">100 м²</span></span>
+                                    <span>⏱ <span class="gold">3 мес</span></span>
+                                </div>
+                                <p class="page-desc">Компактный дом для молодой семьи. Продуманная планировка, современные материалы, энергоэффективность.</p>
+                                <button class="btn btn-gold" onclick="openModal()">Заказать проект</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Страница 9 -->
+                    <div class="magazine-page" data-page="9">
+                        <div class="page-content">
+                            <div class="page-image">
+                                <img src="img/dom-lux.jpg" alt="Дом Люкс">
+                            </div>
+                            <div class="page-info">
+                                <div class="page-number">ПРОЕКТ 09</div>
+                                <h3>Дом «Люкс»</h3>
+                                <div class="page-meta">
+                                    <span>📐 <span class="gold">350 м²</span></span>
+                                    <span>⏱ <span class="gold">7 мес</span></span>
+                                </div>
+                                <p class="page-desc">Роскошный особняк с винным погребом, домашним кинотеатром и спа-зоной. Для ценителей комфорта.</p>
+                                <button class="btn btn-gold" onclick="openModal()">Заказать проект</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="magazine-nav">
+                <button class="magazine-btn" id="prevPage">←</button>
+                <span class="magazine-counter" id="pageCounter">1 / 9</span>
+                <button class="magazine-btn" id="nextPage">→</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ГАЛЕРЕЯ РАБОТ -->
+    <section class="portfolio reveal" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Галерея работ</h2>
+                <p>Более 200 сданных объектов. Визуальное доказательство нашего качества.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="img/gallery-brick.jpg" alt="Кирпичная кладка">
+                    <div class="gallery-caption">Идеальная геометрия кладки</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/gallery-garage.jpg" alt="Дом с гаражом">
+                    <div class="gallery-caption">Дом с гаражом и благоустройством</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/gallery-panorama.jpg" alt="Дом с панорамными окнами">
+                    <div class="gallery-caption">Современный дом с панорамным остеклением</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/gallery-foundation.jpg" alt="Фундамент">
+                    <div class="gallery-caption">Качественный монолитный фундамент</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/gallery-arch.jpg" alt="Строительство">
+                    <div class="gallery-caption">Работа со сложными архитектурными элементами</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/gallery-building.jpg" alt="Современное здание">
+                    <div class="gallery-caption">Современные архитектурные решения</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРОЦЕСС -->
+    <section class="process reveal" id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Как мы работаем</h2>
+                <p>Прозрачный процесс от заявки до сдачи объекта.</p>
+            </div>
+            <div class="process-steps">
+                <div class="step"><div class="step-num">1</div><h4>Заявка</h4><p>Оставляете заявку на сайте или звоните. Связываемся в течение 5 минут.</p></div>
+                <div class="step"><div class="step-num">2</div><h4>Консультация</h4><p>Обсуждаем проект, выезжаем на участок для оценки.</p></div>
+                <div class="step"><div class="step-num">3</div><h4>Смета и договор</h4><p>Фиксируем цены и сроки в официальном договоре.</p></div>
+                <div class="step"><div class="step-num">4</div><h4>Строительство</h4><p>Работаем по графику, отчитываемся о ходе работ.</p></div>
+                <div class="step"><div class="step-num">5</div><h4>Сдача объекта</h4><p>Принимаете работу, получаете гарантию 15 лет.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТЗЫВЫ -->
+    <section class="reviews reveal">
+        <div class="container">
+            <div class="section-header"><h2>Отзывы наших клиентов</h2></div>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="quote-mark">“</div>
+                    <div class="review-text">Строили дом под ключ. Очень переживали из-за сметы, но ребята зафиксировали всё в договоре. Ни рубля сверху! Сроки соблюли четко. Дом получился именно таким, как мы хотели.</div>
+                    <div class="review-author">Александр и Мария</div>
+                    <div class="review-obj">Дом 140 м², ст. Динская</div>
+                </div>
+                <div class="review-card">
+                    <div class="quote-mark">“</div>
+                    <div class="review-text">Заказывали металлоконструкции для склада. Сделали быстро, качественно, по нашим чертежам. Отдельное спасибо бригадиру за грамотные консультации на этапе проектирования.</div>
+                    <div class="review-author">Сергей</div>
+                    <div class="review-obj">Ангар 300 м², г. Краснодар</div>
+                </div>
+                <div class="review-card">
+                    <div class="quote-mark">“</div>
+                    <div class="review-text">Делали дизайнерский ремонт в квартире. Боялись, что «картинка не совпадет». Но Евгений и Денис лично контролировали процесс. Результат превзошел ожидания, работаем дальше по гарантии.</div>
+                    <div class="review-author">Елена</div>
+                    <div class="review-obj">Ремонт квартиры 85 м², ЖК «Панорама»</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О КОМПАНИИ -->
+    <section class="about reveal" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>О компании «Омега»</h2>
+                    <p>Мы — строительная компания с 8-летним опытом работы в Краснодаре и крае. Реализовали более 200 объектов различной сложности.</p>
+                    <p>Специализация — строительство домов под ключ, изготовление металлоконструкций и ремонт. Работаем строго по договору, соблюдаем сроки, гарантируем качество.</p>
+                    <p>С нами вы не узнаете, что такое «нервная стройка».</p>
+                    <p><strong>Офис:</strong> г. Краснодар, ул. Российская, 408.</p>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq reveal" id="faq">
+        <div class="container">
+            <div class="section-header"><h2>Часто задаваемые вопросы</h2></div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Входит ли участок в стоимость дома?</div>
+                    <div class="faq-answer">Нет, стоимость строительства рассчитывается без учета стоимости земельного участка. Однако мы можем помочь с его подбором и оценкой.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Для чего необходим предварительный выезд бригадира на участок?</div>
+                    <div class="faq-answer">Это нужно для оценки геологии, рельефа, подъездных путей и коммуникаций. Это позволяет составить точную смету и избежать непредвиденных расходов в процессе стройки.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Какая техника используется при строительстве?</div>
+                    <div class="faq-answer">Мы используем современную спецтехнику: экскаваторы, автокраны, бетономешалки, виброплиты — в зависимости от этапа работ и типа объекта.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">В какое время года можно начинать строить?</div>
+                    <div class="faq-answer">Фундамент и коробку можно возводить круглый год. Отделочные работы лучше планировать на теплый сезон. Мы составляем график с учетом погодных условий Краснодарского края.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Какая средняя продолжительность строительства?</div>
+                    <div class="faq-answer">Дом площадью до 150 м² под ключ строится в среднем 4–6 месяцев. Точные сроки фиксируются в договоре после утверждения проекта.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">«Хочу, чтобы картинка дома в голове совпала с реальностью. Как это сделать?»</div>
+                    <div class="faq-answer">Мы обязательно обсуждаем все детали до старта, работаем с визуализациями и 3D-проектами. Наш бригадир выезжает на участок, чтобы учесть все нюансы на месте. Вы всегда видите, как продвигается работа.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФОРМА ВНИЗУ -->
+    <section class="cta-section reveal" id="form">
+        <div class="cta-content">
+            <h2>Обсудим ваш проект?</h2>
+            <p>Оставьте заявку, и мы свяжемся в течение 5 минут</p>
+            
+            <div class="call-block">
+                <h3>Если остались вопросы — звоните!</h3>
+                <p>Мы всегда на связи и готовы ответить на любые вопросы по вашему будущему дому.</p>
+                <div class="phone-numbers">
+                    <a href="tel:+79183330323">Евгений: +7 (918) 333-03-23</a>
+                    <a href="tel:+79186990140">Денис: +7 (918) 699-01-40</a>
+                </div>
+                <button class="btn btn-gold" onclick="openModal()">Запросить звонок</button>
+            </div>
+            
+            <p style="margin-top: 30px; font-size: 15px;">
+                <strong>Telegram:</strong> <a href="https://t.me/OmegaKrd23" target="_blank" style="color: var(--gold);">Канал @OmegaKrd23</a> | <a href="https://t.me/OmegaKrd23_bot" target="_blank" style="color: var(--gold);">Бот @OmegaKrd23_bot</a>
+            </p>
+        </div>
+
+        <div class="form-container">
+            <h3>Оставить заявку</h3>
+            <form id="mainForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" placeholder="Ваш телефон" required>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agree" required>
+                    <label for="agree">Нажимая кнопку, вы соглашаетесь с <a href="#" style="color: var(--gold);">политикой конфиденциальности</a>.</label>
+                </div>
+                <button type="submit" class="btn btn-gold form-btn">Отправить заявку</button>
+            </form>
+            <div id="successMsg" class="success-message" style="display:none; background:var(--gold); color:var(--graphite); padding:20px; text-align:center; font-weight:600; margin-top:20px;">
+                ✅ Спасибо! Ваша заявка принята.
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <div class="logo-text">ОМЕГА</div>
+                    <div class="logo-sub">СТРОИТЕЛЬНАЯ КОМПАНИЯ</div>
+                </div>
+                <p>Строительная компания. Дома под ключ, металлоконструкции, ремонт. Работаем по Краснодару и краю.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <a href="tel:+79183330323">Евгений: +7 (918) 333-03-23</a>
+                <a href="tel:+79186990140">Денис: +7 (918) 699-01-40</a>
+                <a href="https://t.me/OmegaKrd23" target="_blank">Канал: @OmegaKrd23</a>
+                <a href="https://t.me/OmegaKrd23_bot" target="_blank">Бот: @OmegaKrd23_bot</a>
+                <a href="mailto:omega_krd@bk.ru">omega_krd@bk.ru</a>
+                <p style="margin-top: 15px;">г. Краснодар, ул. Российская, 408</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Мы на карте</h4>
+                <div class="footer-map">
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A8f7b1b5e8e8e8e8e8e8e8e8e8e8e8e8e&source=constructor&ll=38.975%2C45.035&z=16&pt=38.975,45.035,pm2rdm" width="100%" height="100%" frameborder="0" allowfullscreen="true"></iframe>
+                </div>
+                <a href="https://yandex.ru/maps/?text=Краснодар, ул. Российская, 408" target="_blank" style="display: block; margin-top: 10px; font-size: 12px; text-align: center; color: var(--gold);">Открыть в Яндекс.Картах →</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 Строительная компания «Омега»</div>
+            <div>
+                <a href="#" style="margin-right: 15px;">Политика конфиденциальности</a>
+                <a href="#">Согласие на рассылку</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- МОБИЛЬНАЯ КНОПКА ЗВОНКА -->
+    <a href="tel:+79186990140" class="mobile-call-btn">📞 Позвонить Денису: +7 (918) 699-01-40</a>
+
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h3>Получить консультацию</h3>
+            <p>Заполните форму, и мы свяжемся с вами в течение 5 минут</p>
+            
+            <form class="modal-form" id="modalForm" onsubmit="handleModalSubmit(event)">
+                <div class="form-group">
+                    <input type="text" id="modalName" placeholder="Ваше ФИО" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="modalPhone" placeholder="Ваш телефон" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="modalEmail" placeholder="Ваш Email" required>
+                </div>
+                <button type="submit" class="btn btn-gold">Отправить заявку</button>
+            </form>
+            
+            <div class="modal-success" id="modalSuccess">
+                ✅ Спасибо! Мы свяжемся с вами в ближайшее время.
+            </div>
+        </div>
+    </div>
+
+    <!-- СКРИПТЫ -->
+    <script>
+        // 1. Анимация появления при прокрутке
+        const reveals = document.querySelectorAll('.reveal');
+        
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            const revealPoint = 150;
+            
+            reveals.forEach(reveal => {
+                const revealTop = reveal.getBoundingClientRect().top;
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', checkReveal);
+        checkReveal();
+
+        // 2. Аккордеон FAQ
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                const answer = item.nextElementSibling;
+                
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== parent) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-answer').style.display = 'none';
+                    }
+                });
+
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    parent.classList.remove('active');
+                } else {
+                    answer.style.display = 'block';
+                    parent.classList.add('active');
+                }
+            });
+        });
+
+        // 3. Обработка основной формы
+        function handleFormSubmit(event) {
+            event.preventDefault(); 
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            
+            if(name && phone) {
+                const msg = document.getElementById('successMsg');
+                msg.style.display = 'block';
+                document.getElementById('mainForm').reset();
+                
+                setTimeout(() => {
+                    msg.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // 4. Модальное окно
+        const modalOverlay = document.getElementById('modalOverlay');
+
+        function openModal() {
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('modalForm').reset();
+            document.getElementById('modalSuccess').style.display = 'none';
+            document.getElementById('modalForm').style.display = 'block';
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        function handleModalSubmit(event) {
+            event.preventDefault();
+            
+            const fio = document.getElementById('modalName').value;
+            const phone = document.getElementById('modalPhone').value;
+            const email = document.getElementById('modalEmail').value;
+            
+            if(fio && phone && email) {
+                document.getElementById('modalForm').style.display = 'none';
+                document.getElementById('modalSuccess').style.display = 'block';
+                
+                setTimeout(() => {
+                    closeModal();
+                }, 3000);
+            }
+        }
+
+        // 5. Логика журнала (каталога)
+        let currentPage = 1;
+        const totalPages = 9;
+        const pages = document.querySelectorAll('.magazine-page');
+        const counter = document.getElementById('pageCounter');
+        const prevBtn = document.getElementById('prevPage');
+        const nextBtn = document.getElementById('nextPage');
+
+        function showPage(pageNum) {
+            pages.forEach((page, index) => {
+                page.classList.remove('active', 'prev');
+                if (index + 1 === pageNum) {
+                    page.classList.add('active');
+                } else if (index + 1 < pageNum) {
+                    page.classList.add('prev');
+                }
+            });
+            counter.textContent = pageNum + ' / ' + totalPages;
+            currentPage = pageNum;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                showPage(currentPage + 1);
+            }
+        });
+
+        showPage(1);
+
+        // 6. Плавная прокрутка для навигации (кнопки в шапке)
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
